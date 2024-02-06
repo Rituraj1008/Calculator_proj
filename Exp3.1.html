@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #555;
+        }
+
+        form {
+            background-color: #ec7d06;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0ef2f6;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #177df2;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <form action="cal_srlvlt">
+        <h1>Hello, this is a calculator</h1>
+        <h2>Enter your first value</h2>
+        <input type="number" name="vall1">
+        <h2>Enter your second value</h2>
+        <input type="number" name="vall2">
+        <br><br>
+        <button name="button" value="1">Add</button>
+        <br>
+        <button name="button" value="2">Subtract</button>
+        <br>
+        <button name="button" value="3">Multiplication</button>
+        <div id="result"></div>
+    </form>
+
+    <script>
+        // JavaScript to handle the calculation and display result
+        const form = document.querySelector('form');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const vall1 = parseInt(form.querySelector('input[name="vall1"]').value);
+            const vall2 = parseInt(form.querySelector('input[name="vall2"]').value);
+            const buttonValue = parseInt(form.querySelector('button:focus').value);
+
+            let result;
+
+            switch (buttonValue) {
+                case 1:
+                    result = vall1 + vall2;
+                    break;
+                case 2:
+                    result = vall1 - vall2;
+                    break;
+                case 3:
+                    result = vall1 * vall2;
+                    break;
+                default:
+                    result = 'Invalid operation';
+            }
+
+            resultDiv.textContent = `Result: ${result}`;
+        });
+    </script>
+</body>
+</html>
